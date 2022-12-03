@@ -1,6 +1,6 @@
 {
   "name": "@nibih/search",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Small package for quick searching",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "search"
   ],
   "author": "nibih",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nibih/search/issues"
   },
