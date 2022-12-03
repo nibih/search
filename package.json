@@ -1,0 +1,25 @@
+{
+  "name": "@nibih/search",
+  "version": "1.0.0",
+  "description": "Small package for quick searching",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nibih/search.git"
+  },
+  "keywords": [
+    "search"
+  ],
+  "author": "nibih",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nibih/search/issues"
+  },
+  "homepage": "https://github.com/nibih/search#readme",
+  "dependencies": {
+    "natural": "^5.2.3"
+  }
+}
