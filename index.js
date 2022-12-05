@@ -1,5 +1,3 @@
-const natural = require('natural');
-
 const flatten = (obj, path = []) => {
   return Object.keys(obj).reduce((acc, key) => {
     const value = obj[key];
@@ -13,6 +11,7 @@ const flatten = (obj, path = []) => {
 
 const search = (query, data, strict_mode = false) => {
   const flattened = flatten(data);
+
   // if query is empty return all data
   if (!query) {
     return data;
@@ -34,15 +33,17 @@ const search = (query, data, strict_mode = false) => {
     // join item array into string and lower case
     const itemString = item.join(' ').toString().toLowerCase();
 
-    return [natural.DiceCoefficient(itemString, queryArray), item];
+    // calculate Dice coefficient similarity
+    const a = queryArray.split('');
+    const b = itemString.split('');
+    const intersection = a.filter((x) => b.includes(x)).length;
+    const union = a.length + b.length - intersection;
+    const diceCoefficient = (2 * intersection) / union;
+
+    return [diceCoefficient, item];
   });
   //   get highest similarity score number
-  const highest = similarities.reduce((acc, item) => {
-    if (item[0] > acc) {
-      return item[0];
-    }
-    return acc;
-  }, 0);
+  const highest = Math.max(...similarities.map((item) => item[0]));
   //   filter similarities by highest similarity score(approximate)
 
   // if not strict mode, "filtered" is approximated results, if strict mode, "filtered" is strictmode results
@@ -61,13 +62,11 @@ const search = (query, data, strict_mode = false) => {
   let resultsIndexes = new Set();
 
   //   get indexes of filtered results
-  filtered.reduce((acc, item) => {
-    //   get first entry of valid item use validation
-
+  for (const item of filtered) {
     if (item) {
       resultsIndexes.add(item[0]);
     }
-  }, 0);
+  }
 
   //   return results
 
@@ -75,7 +74,7 @@ const search = (query, data, strict_mode = false) => {
   resultsIndexes.forEach((index) => {
     results.push(data[index]);
   });
-  
+
   return results;
 };
 
