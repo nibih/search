@@ -1,5 +1,7 @@
 # @nibih/search
-The @nibih/search package provides a powerful search function that allows you to easily search through a nested object and find any keys or values that match a given query. The search is case-insensitive and uses the DiceCoefficient algorithm from the natural package to calculate the similarity between the query and the keys or values in the object. This allows for approximate matching, so even if the query doesn't match exactly, it will still return results that are similar.
+The @nibih/search package provides a powerful search function that allows you to easily search through a nested object and find any keys or values that match a given query. The search is case-insensitive and uses the DiceCoefficient algorithm to calculate the similarity between the query and the keys or values in the object. This allows for approximate matching, so even if the query doesn't match exactly, it will still return results that are similar.
+
+The updated search function(from 1.1.0) no longer relies on the natural package for calculating the Dice coefficient similarity, as this calculation has been added directly to the search function. Additionally, the resultsIndexes array has been replaced with a Set, which is more efficient for checking if an element exists in the set than in the array.
 
 ## Installation
 To install the @nibih/search package, use the following command:
@@ -152,6 +154,7 @@ const results = search('predjudice and pride', data, true);
 // []
 
 // search for 'Pride and Prejudice' (strict mode)
+const results = search('Pride and Prejudice', data, true)
 
 // [
 //   {
@@ -191,7 +194,8 @@ If you'd like to contribute to the @nibih/search package, please read the CONTRI
 The @nibih/search package has adopted the Contributor Covenant as its Code of Conduct. See the CODE_OF_CONDUCT file for more details.
 
 ## Acknowledgements
-The @nibih/search package was inspired by the need for a "one size fits all" fast and powerful search function that could handle nested objects. The DiceCoefficient algorithm from the natural package was chosen for its ability to calculate the similarity between two strings, which allows for approximate matching. The developers of the @nibih/search package would like to acknowledge the work of the natural package developers and the broader open-source community for their contributions.
+The @nibih/search package was inspired by the need for a "one size fits all" fast and powerful search function that could handle nested objects. The DiceCoefficient algorithm was chosen for its ability to calculate the similarity between strings, allowing for approximate matching in the search function.
 
+We would like to thank the developers of the natural package for their implementation of the DiceCoefficient algorithm, which was used as a reference for the implementation in the @nibih/search package.
 
 
