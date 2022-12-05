@@ -1,6 +1,6 @@
 {
   "name": "@nibih/search",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Small package for quick searching",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,5 @@
   "bugs": {
     "url": "https://github.com/nibih/search/issues"
   },
-  "homepage": "https://github.com/nibih/search#readme",
-  "dependencies": {
-    "natural": "^5.2.3"
-  }
+  "homepage": "https://github.com/nibih/search#readme"
 }
